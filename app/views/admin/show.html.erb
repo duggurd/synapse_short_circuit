@@ -1,0 +1,15 @@
+<%= render "base/head" %>
+<%= render "base/navbar" %>
+
+<%= link_to "browse", admin_index_path %>
+<%= render "base/rproject" %>
+
+<%= render "base/tagsform", tags: @tags %>
+<%= render "base/tagnew", tag: Tag.new %>
+
+<%= link_to "Edit", edit_admin_path( @page_entity.name ) %>
+<%= link_to "Destroy", admin_path( @project.name ) + "/destroy" %>
+
+<%= render "base/sidebar" %>
+<%= render "base/footer" %>
+

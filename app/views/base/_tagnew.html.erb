@@ -1,0 +1,39 @@
+<h3>Add tag</h3>
+<section style="text-align:center;">
+    <%= form_with model: tag, url: tag_path do |form| %>
+
+        <% tag.attributes.keys.each do |attr| %>
+            
+            <% if attr == "project_name" %>
+
+                <% if @page_entity.model_name == "Project" %>
+                    <div>
+                        <%= attr %>
+                        <%= form.text_field "project_name", :value => @page_entity.name, readonly: true %>
+                    </div>
+                    <% next %>
+                <% end %>
+                <% next %>
+            <% end %>
+
+            <% if attr == "publication_name" %>
+                <% if @page_entity.model_name == "Publication" %>
+                    <div>
+                        <%= attr %>
+                        <%= form.text_field attr, :value => @publication.name, readonly: true %>
+                    </div>
+                    <% next %>
+                <% end %>
+                <% next %>
+            <% end %>
+
+            <div>
+                <%= attr %>
+                <%= form.text_field attr %>
+            </div>
+
+        <% end %>
+        <%= form.submit %>
+    <% end %>
+</section>
+

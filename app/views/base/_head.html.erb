@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta>
+        <meta>
+        <meta>
+        <%= stylesheet_link_tag "styles.css" %>
+        <script>
+            var prevScrollpos = window.scrollY;
+            window.onscroll = function() {
+                var currentScrollPos = window.scrollY;
+                if (window.innerWidth) {
+                    if (prevScrollpos > currentScrollPos) {
+                        document.getElementById("navbarr").style.top = "0px";
+                    } else {
+                        document.getElementById("navbarr").style.top = "-130px";
+                    }
+                    prevScrollpos = currentScrollPos;
+                } else {
+                    document.getElementById("navbarr").style.top = "0px";
+                }
+            }
+        </script>
+
+    </head>
+    <body>

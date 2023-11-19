@@ -1,0 +1,27 @@
+<h3>Update tags</h3>
+<ul>
+    <% tags.each do |tag| %>
+        <li>
+            <h5 style="padding:0px; margin:0px;"><%= tag.name %></h5>
+            <%= form_with model: tag, url: tag_path(tag) do |form|%>
+                <% tag.attributes.keys.each do |attr| %>
+                    <% if ["created_at", "updated_at"].include? attr %>
+                        <div>
+                            <%= attr %>
+                            <%= form.text_field attr, readonly: true %>
+                        </div>
+                        <% next %>
+                    <% end %>
+                    <div>
+                        <%= attr %>
+                        <%= form.text_field attr %>
+                    </div>
+                <% end %>
+                <div>
+                    <%= form.submit %>
+                </diV>
+            <% end %>
+            <%= link_to "Destroy",  tag_path(tag) + "/destroy" %>
+        </li>
+    <% end %>
+</ul>

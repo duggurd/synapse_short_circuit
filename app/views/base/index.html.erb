@@ -1,0 +1,116 @@
+<%= render "head" %>
+<%= render "navbar" %>
+
+<div class="page_spacing">
+    <h1 class="h1_middle" style="animation-delay:0s; font-weight:100;">Welcome</h1>
+    <h1 class="h1_middle" style="animation-delay:1s; font-weight:100; text-transform: lowercase;">to</h1>
+    <h1 class="h1_middle" style="animation-delay:2s; font-weight:100;">Synapse S/C</h1>
+
+    <!-- <%= image_tag "neuron-icon.png", :style => "width:100px; margin:20px;" %> -->
+</div>
+
+<main class="center-main" style="box-shadow:none;">
+    <article>
+        <h2 class="homepage_h2">Projects</h2>
+        <div class="flex-container">
+            <% @projects.each do |project| %>
+                <div class="flex-item">
+                    <a href=<%= project_path(project.name) %>>
+                        <div class="homepage-title">
+                            <%= project.name %> 
+                        </div>
+                        <p>
+                            <%= project.description.html_safe %>
+                        </p>
+                        <p>
+                            <b>Started: </b> <%= project.created_at.strftime("%B %d. %Y") %>
+                        </p>
+                        <p>
+                            <b>Version: </b> <%= project.version %>
+                        </p>
+                        <div>
+                            <b style="display:inline;">Phase: </b><div style="color: <%= stage_to_color(project.stage) %>; font-size:16px; text-transform:capitalize; display:inline;">
+                                <%= stage_to_text(project.stage) %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% end %>
+        </div>
+    </article>
+
+    <article>
+        <h2 class="homepage_h2">Publications</h2>
+        <div class="flex-container">
+            <% @publications.each do |publication| %>
+                <div class="flex-item">
+                    <a href=<%= publication_path(publication.name) %>>
+                        <div class="homepage-title"><%= publication.name %></div>
+                        <p>
+                            <%= publication.description.html_safe %>
+                        </p>
+                        <p>
+                            <b>Published: </b> <%= publication.created_at.strftime("%B %d. %Y") %>
+                        </p>
+                        <p>
+                            <b>Last edit: </b> <%= publication.updated_at.strftime("%B %d. %Y") %>
+                        </p>
+                    </a>
+                </div>
+            <% end %>
+        </div>
+    </article>
+
+    <article>
+        <h2 class="homepage_h2">Latest Projects</h2>
+        <div class="flex-container">
+            <% @latest_projects.each do |project| %>
+                <div class="flex-item">
+                    <a href=<%= project_path(project.name) %>>
+                        <div class="homepage-title">
+                            <%= project.name %> 
+                        </div>
+                        <p>
+                            <%= project.description.html_safe %>
+                        </p>
+                        <p>
+                            <b>Started: </b> <%= project.created_at.strftime("%B %d. %Y") %>
+                        </p>
+                        <p>
+                            <b>Version: </b> <%= project.version %>
+                        </p>
+                        <div>
+                            <b style="display:inline;">Phase: </b><div style="color: <%= stage_to_color(project.stage) %>; font-size:16px; text-transform:capitalize; display:inline;">
+                                <%= stage_to_text(project.stage) %>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            <% end %>
+        </div>
+    </article>
+
+    <article>
+    <h2 class="homepage_h2">Latest Publications</h2>
+    <div class="flex-container">
+        <% @latest_publications.each do |publication| %>
+            <div class="flex-item">
+                <a href=<%= publication_path(publication.name) %>>
+                    <div class="homepage-title"><%= publication.name %></div>
+                    <p>
+                        <%= publication.description.html_safe %>
+                    </p>
+                    <p>
+                        <b>Published: </b> <%= publication.created_at.strftime("%B %d. %Y") %>
+                    </p>
+                    <p>
+                        <b>Last edit: </b> <%= publication.updated_at.strftime("%B %d. %Y") %>
+                    </p>
+                </a>
+            </div>
+        <% end %>
+    </div>
+    </article>
+</main>
+
+<%= render "footer" %>

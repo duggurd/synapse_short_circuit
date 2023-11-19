@@ -1,0 +1,15 @@
+<%= render "base/head" %>
+<%= render "base/navbar" %>
+
+<%= link_to "browse", adminpub_index_path %>
+<%= render "base/rpublication" %>
+
+<%= render "base/tagsform", tags: @tags %>
+<%= render "base/tagnew", tag: Tag.new %>
+
+<%= link_to "Edit", edit_adminpub_path( @publication.name ) %>
+<%= link_to "Destroy", adminpub_path( @publication.name ) + "/destroy" %>
+
+<%= render "base/sidebar" %>
+<%= render "base/footer" %>
+

@@ -1,0 +1,25 @@
+<%= form_with model: project, url: destination do |form| %>
+    <% @project.attributes.keys.each do |attr| %>
+        <% next if attr == "hidden" %>
+        <div>
+            <h4 style="text-transform: uppercase; margin-bottom:0;"><%= form.label attr %></h4>
+            
+            <% project.errors.full_messages_for(attr).each do |message| %>
+                <div><%= message %></div>
+            <% end %>
+
+            <%= form.text_area attr %>
+        
+        </div>
+    <% end %>
+
+    <div>
+        <h4 style="text-transform: uppercase; margin-bottom:0;"><%= form.label :hidden %></h4>
+        <%= form.check_box :hidden %>
+    </div>
+
+    <div>
+        <%= form.submit  %>
+    </div>
+
+<% end %>

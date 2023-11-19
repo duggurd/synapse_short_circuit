@@ -1,0 +1,2 @@
+module AdminpublicationsHelper
+end

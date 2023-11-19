@@ -1,0 +1,56 @@
+<main>
+<article class="article_page">
+    <header>
+        <h1 id="title"><%= @project.name %></h1>
+        <p><b>Current version: </b><%=@project.version %> | 
+            <b style="display:inline; color:<%= stage_to_color( @project.stage ) %>;"> <%= stage_to_text( @project.stage ) %> </b>
+        </p>
+        <p><b>Created: </b><%= @project.created_at.strftime("%B %d. %Y") %></p>
+        <p><b>Last change: </b><%= @project.updated_at.strftime("%B %d. %Y at %H:%M" ) %></p>
+        
+        <% if not @project.github_link.nil? and @project.github_link != "" %>
+            <a class="github" href=<%= @project.github_link %>>
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png" style="height:20px; margin-top:20px; width:auto;";>
+            </a>
+        <% end %>
+    </header>
+    <section>
+        <h2 id="description">Description</h2>
+        <p><%= @description %></p>
+    </section>
+    <section>
+        <h2 id="introduction">Introduction</h2>
+        <p><%= @introduction %></p>
+    </section>
+    <section>
+        <h2 id="project">Project</h2>
+        <p><%= @main %></p>
+    </section>
+    <section>
+        <h2 id="results">Results</h2>
+        <p><%= @results %></p>
+    </section>
+    <section>
+        <h2 id="currently">Currently Working on</h2>
+        <p><%= @currently %></p>
+    </section>
+    <section>
+        <h2 id="resources">Resources</h2>
+        <p><%= @resources %></p>
+    </section>
+    <% if @tags.count > 0 %>
+        <p>
+            <h2>Tags</h2>
+            <ul class="list_inline">
+                <% @tags.each do |tag| %>
+                    <li>
+                        <a class="tag" href="/"> 
+                            <%= tag.name %>
+                        </a>
+                    </li>
+                <% end %>
+            </ul>
+        </p>
+    <% end %>
+</article>
+</main>

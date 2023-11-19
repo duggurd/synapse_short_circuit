@@ -1,0 +1,55 @@
+<%= render "base/head" %>
+<%= render "base/navbar" %>
+
+<main class="center-main"> 
+
+    <h1>Publications</h1>
+
+    <ul class="page-entity-list">
+        <% @publications.each do |project| %>
+            <% if project.hidden %>
+                <% next %>
+            <% end %>
+            <li>
+            <a href=<%= publication_path(project.name) %>>
+                <article class="article-list">
+                    <ul class="">
+                        <li class="homepage-title">
+                            <%= project.name %>
+                        </li>
+                        <li style="padding-bottom: 10px; margin-top:10px;">
+                            <%= project.description.html_safe %>
+                        </li>
+                        <li> 
+                            <b>Started:</b> <%= project.created_at %>
+                        </li>
+                        <li> 
+                            <b>Last Changed: </b> <%= project.updated_at %>
+                        </li>
+
+                        <% tags = Tag.where(publication_name: project.name) %>
+                        <% if tags.count > 0 %>
+                            <li> <b>Tags:</b>
+                                <% tags.each do |tag| %>
+                                    <%= tag.name %>
+                                <% end %>
+                            </li>
+                        <% end %>
+
+                        <% if not project.github_link.nil? and project.github_link != "" %>
+                            <li>
+                                This publication is <b><%= link_to "on Github", project.github_link %></b>
+                            </li>
+                        <% end %>
+                        </a>
+                    </ul>
+                </article>
+                </a>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</main>
+
+<%= render "base/footer" %>
+

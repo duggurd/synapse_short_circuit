@@ -1,0 +1,28 @@
+<%= render "base/head" %>
+<%= render "base/navbar" %>
+
+<h1>Projects</h1>
+
+<ul>
+    <% @projects.each do |project| %>
+        <li>
+            <%= link_to project.name, admin_path(project.name) %>
+            <%= "Hidden" if project.hidden %>
+        </li>
+    <% end %>
+</ul>
+
+<h1>Publications</h1>
+
+<ul>
+    <% @publications.each do |publication| %>
+        <li>
+            <%= link_to publication.name, adminpub_path(publication.name) %>
+            <%= "Hidden" if publication.hidden %>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to "New Project", new_admin_path %>
+
+<%= render "base/footer" %>

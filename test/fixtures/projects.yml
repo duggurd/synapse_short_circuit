@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  version: 1.5
+  stage: 1
+  description: MyText
+  introduction: MyText
+  main: MyText
+  results: MyText
+  currently: MyText
+
+two:
+  name: MyText
+  version: 1.5
+  stage: 1
+  description: MyText
+  introduction: MyText
+  main: MyText
+  results: MyText
+  currently: MyText

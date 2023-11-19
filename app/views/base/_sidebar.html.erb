@@ -1,0 +1,22 @@
+<nav class="sidebar">
+    <h3 style="font-weight:100; font-size:30px;">Page Content</h3>
+    <ul style="font-size:20px;">
+        <% @page_entity.attributes.keys.each do |attr| %>
+            <% if ["stage", "version", "hidden", "id", "created_at", "updated_at", "github_link"].include?(attr) %>
+                <% next %>
+            <% end %>
+
+            <% if attr == "name" %>
+                <li class="sidebar_link">
+                    <a href=<%= "#title" %> ><%= @page_entity.name %></a>
+                </li>
+                <% next %>
+            <% end %>
+
+            <li class="sidebar_link">
+                <a href=<%= "#" + attr %>><%= attr %></a>
+            </li>
+        <% end %>
+    </ul>
+</nav>
+
